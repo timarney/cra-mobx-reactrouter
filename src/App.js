@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 import { observable } from "mobx";
 import { observer } from "mobx-react";
+import styled from "styled-components";
+
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
 
 let appState = observable({ timer: 0 });
 
@@ -57,7 +62,7 @@ class BasicExample extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <Wrapper>
           <button id="reset" onClick={() => appState.resetTimer()}>
             <span className="txt">Seconds passed:</span>
             {" "}
@@ -72,7 +77,7 @@ class BasicExample extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/topics" component={Topics} />
-        </div>
+        </Wrapper>
       </Router>
     );
   }
