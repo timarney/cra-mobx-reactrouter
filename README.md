@@ -5,5 +5,5 @@ This project was bootstrapped with:
 
 ```
 npm install -g craftool
-craft MyApp https://github.com/timarney/cra-mobx-reactrouter/archive/master.zip
+craft MyApp https://github.com/timarney/cra-mobx-reactrouter/archive/preact.zip
 ```
