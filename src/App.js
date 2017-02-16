@@ -1,13 +1,29 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { observable } from "mobx";
 import { observer } from "mobx-react";
-import styled from "styled-components";
+import Helmet from 'react-helmet'
+import Home from './views/Home'
+import About from './views/About'
+import NoMatch from './views/NoMatch'
+import Wrapper from './components/Wrapper'
+import Title from './components/Title'
+import Nav from './components/Nav'
+import NavLink from './components/NavLink'
 
-const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
+const title = 'You Are Doing Great'
+const routes = [
+  {
+    title: 'Home',
+    path: '/',
+    component: Home,
+    exact: true
+  }, {
+    title: 'About',
+    path: '/about',
+    component: About
+  }
+]
 
 let appState = observable({ timer: 0 });
 
@@ -22,65 +38,41 @@ setInterval(
   1000
 );
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
-
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-);
-
-const Topic = ({ match }) => (
-  <div>
-    <h3>{match.params.topicId}</h3>
-  </div>
-);
-
-const Topics = ({ match }) => (
-  <div>
-    <h2>Topics</h2>
-    <ul>
-      <li><Link to={`${match.url}/rendering`}>Rendering with React</Link></li>
-      <li><Link to={`${match.url}/components`}>Components</Link></li>
-      <li><Link to={`${match.url}/props-v-state`}>Props v. State</Link></li>
-    </ul>
-    <Route path={`${match.url}/:topicId`} component={Topic} />
-    <Route
-      exact
-      path={match.url}
-      render={() => <h3>Please select a topic.</h3>}
-    />
-  </div>
-);
 
 @observer
-class BasicExample extends Component {
+class App extends Component {
   render() {
     return (
       <Router>
         <Wrapper>
+
+          <Helmet titleTemplate={`%s - ${title}`} />
+
           <button id="reset" onClick={() => appState.resetTimer()}>
             <span className="txt">Seconds passed:</span>
             {" "}
             <span className="timer">{appState.timer}</span>
           </button>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/topics">Topics</Link></li>
-          </ul>
-          <hr />
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} />
+         
+<Title>YADG</Title>
+          <Nav>
+            <h1>Navigation</h1>
+            {routes.map((route, i) => (
+              <NavLink key={i} {...route} />
+            ))}
+          </Nav>
+          <Switch>
+            {routes.map((route, i) => (
+              <Route key={i} {...route} />
+            ))}
+            <Route component={NoMatch} />
+          </Switch>
+
+
         </Wrapper>
       </Router>
     );
   }
 }
 
-export default BasicExample;
+export default App;
