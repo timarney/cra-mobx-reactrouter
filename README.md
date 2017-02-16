@@ -5,6 +5,8 @@ npm install -g craftool
 craft MyApp https://github.com/timarney/cra-mobx-reactrouter/archive/master.zip
 ```
 
+Note: **This is just a template** - you can clone the repo and add remove whatever you need.  That said you can easily create your own using [CRAFT](https://github.com/stoyan/craft).
+
 ####This project was bootstrapped with:
 * [Create React App](https://github.com/facebookincubator/create-react-app)
 * [CRAFT](https://github.com/stoyan/craft)
