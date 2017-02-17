@@ -5,7 +5,7 @@ import { fromPromise } from "mobx-utils";
 const apiRoot = "https://jsonplaceholder.typicode.com";
 
 export default class Store {
-  @observable counter = 0;
+  @observable counter = 10;
 
   @observable users = [];
 
