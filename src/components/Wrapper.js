@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export default styled.div`
   padding: 4rem 1rem;
@@ -7,4 +7,4 @@ export default styled.div`
     width: 80vw;
   }
   max-width: 1140px;
-`
+`;

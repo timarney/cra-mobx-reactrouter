@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export default styled.nav`
   padding: 1rem;
@@ -14,4 +14,4 @@ export default styled.nav`
     display: inline-block;
     margin-top: 0;
   }
-`
+`;
