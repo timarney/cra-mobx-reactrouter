@@ -1,12 +1,8 @@
-/* eslint-disable */
-
 import { observable, when, action } from "mobx";
 import axios from "axios";
 import { fromPromise } from "mobx-utils";
 
-const fetchResult = fromPromise(
-  axios.get("http://jsonplaceholder.typicode.com/users")
-);
+const apiRoot = "https://jsonplaceholder.typicode.com";
 
 export default class Store {
   @observable counter = 0;
@@ -20,9 +16,7 @@ export default class Store {
     this.counter -= 1;
   }
   @action fetch() {
-    let fetchResult = fromPromise(
-      axios.get("http://jsonplaceholder.typicode.com/users")
-    );
+    let fetchResult = fromPromise(axios.get(`${apiRoot}/users`));
 
     // combine with when..
     when(() => fetchResult.state !== "pending", () => {
