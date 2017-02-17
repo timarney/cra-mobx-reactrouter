@@ -1,6 +1,5 @@
-import React from "react";
-import { observer } from "mobx-react";
-
+import React, { Component } from "react";
+import { observer, inject } from "mobx-react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -26,7 +25,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Counter = observer(({ store }) => {
+export const Counter = observer(({ store }) => {
   return (
     <Wrapper>
       <div className="counter-wrap">
@@ -44,4 +43,13 @@ const Counter = observer(({ store }) => {
   );
 });
 
-export default Counter;
+@inject("store")
+@observer
+class CounterWithStore extends Component {
+  render() {
+    let { store } = this.props;
+    return <Counter store={store} />;
+  }
+}
+
+export default CounterWithStore;
