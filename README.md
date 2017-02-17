@@ -3,7 +3,7 @@
 npm install -g craftool
 craft MyApp https://github.com/timarney/cra-mobx-reactrouter/archive/master.zip
 ```
-The build script will give you fully static rendered pages see: [demo output](https://juvenile-pin.surge.sh)
+The build script will give you fully static rendered pages see: [demo output](https://cluttered-year.surge.sh)
 
 Note: **This is just a template** - you can clone the repo and add remove whatever you need.  That said you can easily create your own using [CRAFT](https://github.com/stoyan/craft).
 
